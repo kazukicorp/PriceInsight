@@ -26,7 +26,7 @@ public class UniversalisClientV2 : IDisposable {
         httpClient = new HttpClient(new SocketsHttpHandler {
             AutomaticDecompression = DecompressionMethods.All, ConnectCallback = happyEyeballsCallback.ConnectCallback
         });
-        httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"PriceInsight/{Assembly.GetExecutingAssembly().GetName().Version} ({Environment.OSVersion}) Dalamud/{Util.AssemblyVersion}");
+        httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"PriceInsight/{Assembly.GetExecutingAssembly().GetName().Version} ({Environment.OSVersion}) Dalamud/{Assembly.GetAssembly(typeof(Util))!.GetName().Version}");
     }
 
     public async Task<Dictionary<uint, MarketBoardData>?> GetMarketBoardDataList(
